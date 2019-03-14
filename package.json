@@ -1,0 +1,28 @@
+{
+  "name": "orca-logo",
+  "version": "0.9.0",
+  "description": "The logo for NCLS Development's Orca solution in all its forms, as a Web Component",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ccjmne/orca-logo.git"
+  },
+  "keywords": [
+    "logo",
+    "ncls",
+    "orca",
+    "usetheplatform",
+    "webcomponent",
+    "web component",
+    "customelement",
+    "custom element",
+    "svg",
+    "animated"
+  ],
+  "author": "Eric NICOLAS <ccjmne@gmail.com> (ccjmne)",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/ccjmne/orca-logo/issues"
+  },
+  "homepage": "https://github.com/ccjmne/orca-logo#readme"
+}
