@@ -4,11 +4,50 @@
     <head>
         <meta charset="utf-8">
         <title>Orca logo as a Web Component #useThePlatform</title>
+        <style type="text/css">
+        html,
+        body {
+            margin: 0;
+            height: 100%;
+        }
+
+        body {
+            display: grid;
+            justify-content: center;
+            align-content: center;
+        }
+
+        figure {
+            min-width: 10vw;
+            max-width: 50vw;
+        }
+
+        figcaption {
+            text-align: center;
+        }
+
+        </style>
     </head>
 
     <body>
-        <orca-logo></orca-logo>
-        <orca-logo animated></orca-logo>
+        <figure>
+            <orca-logo></orca-logo>
+            <figcaption>
+                <pre>&lt;orca-logo&gt;&lt;/orca-logo&gt;</pre>
+            </figcaption>
+        </figure>
+        <figure>
+            <orca-logo animated></orca-logo>
+            <figcaption>
+                <pre>&lt;orca-logo animated&gt;&lt;/orca-logo&gt;</pre>
+            </figcaption>
+        </figure>
+        <figure>
+            <orca-logo animated="spinner"></orca-logo>
+            <figcaption>
+                <pre>&lt;orca-logo animated="spinner"&gt;&lt;/orca-logo&gt;</pre>
+            </figcaption>
+        </figure>
     </body>
 
 </html>
