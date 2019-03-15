@@ -1,7 +1,39 @@
 $primary-color: #337ab7;
+$reveal-duration: 5s;
+$spin-duration: 3s;
 
 :host {
   display: block;
+  will-change: transform;
+}
+
+:host(:not([animated]), [animated=false]) {
+  [animate-stroke] {
+    stroke: none;
+  }
+}
+
+:host([animated]:not([animated=spinner]).in-viewport) {
+  [animate-stroke] {
+    animation: reveal $reveal-duration ease-in-out forwards;
+    stroke-dasharray: var(--total-length) var(--total-length);
+  }
+
+  [animate-fill] {
+    animation: reveal-fill $reveal-duration ease-in-out forwards;
+  }
+}
+
+:host([animated=spinner]) {
+  [animate-fill] {
+    fill: none;
+  }
+
+  [animate-stroke] {
+    animation: spinner $spin-duration linear infinite;
+    stroke-width: 2;
+    stroke-dasharray: calc(var(--total-length) * 3 / 8) calc(var(--total-length) * 1 / 8);
+  }
 }
 
 circle,
@@ -21,11 +53,49 @@ path {
     fill: white;
   }
 
-  &[animate-stroke]:not([animate-fill]) {
+  &[animate-stroke] {
     fill: none;
   }
 
-  &[animate-fill]:not([animate-stroke]) {
+  &[animate-fill] {
     stroke: none;
+  }
+}
+@keyframes reveal {
+  0% {
+    stroke-width: 2;
+    stroke-dashoffset: var(--total-length);
+  }
+
+  75% {
+    stroke-width: 1;
+    stroke-dashoffset: 0;
+    stroke-opacity: 1;
+  }
+
+  100% {
+    stroke-opacity: 0;
+  }
+}
+@keyframes reveal-fill {
+  0% {
+    fill-opacity: 0;
+  }
+
+  75% {
+    fill-opacity: 0;
+  }
+
+  100% {
+    fill-opacity: 1;
+  }
+}
+@keyframes spinner {
+  from {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: var(--total-length);
   }
 }
