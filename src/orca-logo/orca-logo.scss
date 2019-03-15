@@ -1,5 +1,5 @@
 $primary-color: #337ab7;
-$reveal-duration: 5s;
+$reveal-duration: 3s;
 $spin-duration: 3s;
 
 :host {
@@ -13,20 +13,40 @@ $spin-duration: 3s;
   }
 }
 
-:host([animated]:not([animated=spinner]).in-viewport) {
-  [animate-stroke] {
-    animation: reveal $reveal-duration ease-in-out forwards;
-    stroke-dasharray: var(--total-length) var(--total-length);
+:host([animated]:not([animated=spinner])) {
+  &:host(:not(.in-viewport)) {
+    visibility: hidden;
   }
 
-  [animate-fill] {
-    animation: reveal-fill $reveal-duration ease-in-out forwards;
+  &:host(.in-viewport) {
+    [animate-stroke] {
+      animation: reveal-stroke-in $reveal-duration ease-in-out forwards, reveal-stroke-out 1.5s ease-in $reveal-duration forwards;
+      stroke-dasharray: var(--total-length) var(--total-length);
+    }
+
+    [animate-fill] {
+      animation: reveal-fill 1.5s ease-in $reveal-duration forwards;
+      fill-opacity: 0;
+    }
+
+    rect.shine {
+      animation: shine .8s ease-in-out $reveal-duration;
+    }
+  }
+}
+@keyframes shine {
+  from {
+    x: -125;
+  }
+
+  to {
+    x: 540;
   }
 }
 
 :host([animated=spinner]) {
   [animate-fill] {
-    fill: none;
+    fill-opacity: .15;
   }
 
   [animate-stroke] {
@@ -61,32 +81,32 @@ path {
     stroke: none;
   }
 }
-@keyframes reveal {
-  0% {
+@keyframes reveal-stroke-in {
+  from {
     stroke-width: 2;
     stroke-dashoffset: var(--total-length);
   }
 
-  75% {
+  to {
     stroke-width: 1;
     stroke-dashoffset: 0;
+  }
+}
+@keyframes reveal-stroke-out {
+  from {
     stroke-opacity: 1;
   }
 
-  100% {
+  to {
     stroke-opacity: 0;
   }
 }
 @keyframes reveal-fill {
-  0% {
+  from {
     fill-opacity: 0;
   }
 
-  75% {
-    fill-opacity: 0;
-  }
-
-  100% {
+  to {
     fill-opacity: 1;
   }
 }
