@@ -39,8 +39,10 @@ window.customElements.define('orca-logo', class OrcaLogo extends HTMLElement {
   }
 
   connectedCallback() {
-    this.addEventListener('mouseenter', this.shine, { passive: true });
-    this.addEventListener('touchstart', this.shine, { passive: true });
+    if (!this.spinner) {
+      this.addEventListener('mouseenter', this.shine, { passive: true });
+      this.addEventListener('touchstart', this.shine, { passive: true });
+    }
 
     if (this.animated) {
       this.style.visibility = 'hidden';
@@ -61,13 +63,27 @@ window.customElements.define('orca-logo', class OrcaLogo extends HTMLElement {
           anime({ targets: this.fills, 'fill-opacity': [0, 1], easing, duration, delay: duration });
         }
       });
+    } else if (this.spinner) {
+      new OnScreen(this, {
+        once: true,
+        enter: () => {
+          this.strokes.forEach(s => (s.style['stroke-opacity'] = 1, s.style['stroke-width'] = 2, s.style['stroke-dasharray'] = `${s.getTotalLength() * 3 / 8} ${s.getTotalLength() * 1 / 8}`));
+          this.fills.forEach(s => s.style['fill-opacity'] = .1);
+          const defaults = { easing: 'linear', duration: 3500 };
+          anime({ targets: this.strokes, ...defaults, strokeDashoffset: [0, anime.setDashoffset], loop: true, direction: 'normal' });
+        }
+      });
     } else {
       this.strokes.forEach(s => s.style.stroke = 'none');
     }
   }
 
   get animated() {
-    return this.getAttribute('animated') !== null && this.getAttribute('animated') !== 'false';
+    return this.getAttribute('animated') !== null && this.getAttribute('animated') !== 'spinner' && this.getAttribute('animated') !== 'false';
+  }
+
+  get spinner() {
+    return this.getAttribute('animated') === 'spinner';
   }
 
   static _generateUUID() {
