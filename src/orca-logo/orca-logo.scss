@@ -1,0 +1,31 @@
+$primary-color: #337ab7;
+
+:host {
+  display: block;
+}
+
+circle,
+path {
+  &[colour=primary] {
+    stroke: var(--primary-color, $primary-color);
+    fill: var(--primary-color, $primary-color);
+  }
+
+  &[colour=black] {
+    stroke: grey;
+    fill: black;
+  }
+
+  &[colour=white] {
+    stroke: grey;
+    fill: white;
+  }
+
+  &[animate-stroke]:not([animate-fill]) {
+    fill: none;
+  }
+
+  &[animate-fill]:not([animate-stroke]) {
+    stroke: none;
+  }
+}
