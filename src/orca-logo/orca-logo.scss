@@ -1,7 +1,59 @@
 $primary-color: #337ab7;
+$reveal-duration: 3s;
+$spin-duration: 3s;
 
 :host {
   display: block;
+  will-change: transform;
+}
+
+:host(:not([animated]), [animated=false]) {
+  [animate-stroke] {
+    stroke: none;
+  }
+}
+
+:host([animated]:not([animated=spinner])) {
+  &:host(:not(.in-viewport)) {
+    visibility: hidden;
+  }
+
+  &:host(.in-viewport) {
+    [animate-stroke] {
+      animation: reveal-stroke-in $reveal-duration ease-in-out forwards, reveal-stroke-out 1.5s ease-in $reveal-duration forwards;
+      stroke-dasharray: var(--total-length) var(--total-length);
+    }
+
+    [animate-fill] {
+      animation: reveal-fill 1.5s ease-in $reveal-duration forwards;
+      fill-opacity: 0;
+    }
+
+    rect.shine {
+      animation: shine .8s ease-in-out $reveal-duration;
+    }
+  }
+}
+@keyframes shine {
+  from {
+    x: -125;
+  }
+
+  to {
+    x: 540;
+  }
+}
+
+:host([animated=spinner]) {
+  [animate-fill] {
+    fill-opacity: .15;
+  }
+
+  [animate-stroke] {
+    animation: spinner $spin-duration linear infinite;
+    stroke-width: 2;
+    stroke-dasharray: calc(var(--total-length) * 3 / 8) calc(var(--total-length) * 1 / 8);
+  }
 }
 
 circle,
@@ -21,11 +73,49 @@ path {
     fill: white;
   }
 
-  &[animate-stroke]:not([animate-fill]) {
+  &[animate-stroke] {
     fill: none;
   }
 
-  &[animate-fill]:not([animate-stroke]) {
+  &[animate-fill] {
     stroke: none;
+  }
+}
+@keyframes reveal-stroke-in {
+  from {
+    stroke-width: 2;
+    stroke-dashoffset: var(--total-length);
+  }
+
+  to {
+    stroke-width: 1;
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes reveal-stroke-out {
+  from {
+    stroke-opacity: 1;
+  }
+
+  to {
+    stroke-opacity: 0;
+  }
+}
+@keyframes reveal-fill {
+  from {
+    fill-opacity: 0;
+  }
+
+  to {
+    fill-opacity: 1;
+  }
+}
+@keyframes spinner {
+  from {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: var(--total-length);
   }
 }

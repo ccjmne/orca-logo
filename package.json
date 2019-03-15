@@ -1,6 +1,6 @@
 {
   "name": "orca-logo",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "The logo for NCLS Development's Orca solution in all its forms, as a Web Component",
   "main": "index.js",
   "modlue": "dist/main.min.js",
@@ -18,11 +18,10 @@
     "logo",
     "ncls",
     "orca",
+    "vanillajs",
     "usetheplatform",
     "webcomponent",
-    "web component",
     "customelement",
-    "custom element",
     "svg",
     "animated"
   ],
@@ -47,7 +46,5 @@
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.2.1"
   },
-  "dependencies": {
-    "animejs": "^3.0.1"
-  }
+  "dependencies": {}
 }
