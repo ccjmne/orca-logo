@@ -64,9 +64,11 @@ window.customElements.define('orca-logo', class OrcaLogo extends HTMLElement {
         }
       });
     } else if (this.spinner) {
+      this.style.visibility = 'hidden';
       new OnScreen(this, {
         once: true,
         enter: () => {
+          this.style.visibility = 'visible';
           this.strokes.forEach(s => (s.style['stroke-opacity'] = 1, s.style['stroke-width'] = 2, s.style['stroke-dasharray'] = `${s.getTotalLength() * 3 / 8} ${s.getTotalLength() * 1 / 8}`));
           this.fills.forEach(s => s.style['fill-opacity'] = .1);
           const defaults = { easing: 'linear', duration: 3500 };
