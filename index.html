@@ -10,14 +10,21 @@
             margin: 0;
         }
 
-        body {
+        body,
+        main {
             display: grid;
             justify-content: center;
             align-content: center;
         }
 
+        header {
+            text-align: center;
+            padding: 5rem 0;
+            font-size: 1.5rem;
+        }
+
         @media (min-width: 750px) {
-            body {
+            main {
                 grid-template: 'left-1 right''left-2 right''left-3 right';
                 grid-auto-flow: row;
             }
@@ -55,51 +62,56 @@
     </head>
 
     <body>
-        <figure class="left">
-            <orca-logo></orca-logo>
-            <figcaption>
-                <pre>&lt;<span class="elem">orca-logo</span>&gt;&lt;/<span class="elem">orca-logo</span>&gt;</pre>
-            </figcaption>
-        </figure>
-        <figure class="left">
-            <orca-logo animated></orca-logo>
-            <figcaption>
-                <pre>&lt;<span class="elem">orca-logo</span> <span class="attr">animated</span>&gt;&lt;/<span class="elem">orca-logo</span>&gt;</pre>
-            </figcaption>
-        </figure>
-        <figure class="left">
-            <orca-logo animated="spinner"></orca-logo>
-            <figcaption>
-                <pre>&lt;<span class="elem">orca-logo</span> <span class="attr">animated</span>="<span class="attr-value">spinner</span>"&gt;&lt;/<span class="elem">orca-logo</span>&gt;</pre>
-            </figcaption>
-        </figure>
-        <figure>
-            <orca-logo style="--primary-color: darkorange"></orca-logo>
-            <figcaption>
-                <pre>&lt;<span class="elem">orca-logo</span>
+        <header>
+            <pre>npm install orca-logo</pre>
+        </header>
+        <main>
+            <figure class="left">
+                <orca-logo></orca-logo>
+                <figcaption>
+                    <pre>&lt;<span class="elem">orca-logo</span>&gt;&lt;/<span class="elem">orca-logo</span>&gt;</pre>
+                </figcaption>
+            </figure>
+            <figure class="left">
+                <orca-logo animated></orca-logo>
+                <figcaption>
+                    <pre>&lt;<span class="elem">orca-logo</span> <span class="attr">animated</span>&gt;&lt;/<span class="elem">orca-logo</span>&gt;</pre>
+                </figcaption>
+            </figure>
+            <figure class="left">
+                <orca-logo animated="spinner"></orca-logo>
+                <figcaption>
+                    <pre>&lt;<span class="elem">orca-logo</span> <span class="attr">animated</span>="<span class="attr-value">spinner</span>"&gt;&lt;/<span class="elem">orca-logo</span>&gt;</pre>
+                </figcaption>
+            </figure>
+            <figure>
+                <orca-logo style="--primary-color: darkorange"></orca-logo>
+                <figcaption>
+                    <pre>&lt;<span class="elem">orca-logo</span>
     <span class="attr">style</span>="<span class="attr-value">--primary-color: darkorange</span>"&gt;
     &lt;/<span class="elem">orca-logo</span>&gt;</pre>
-            </figcaption>
-        </figure>
-        <figure>
-            <orca-logo animated style="--primary-color: lightseagreen"></orca-logo>
-            <figcaption>
-                <pre>&lt;<span class="elem">orca-logo</span>
+                </figcaption>
+            </figure>
+            <figure>
+                <orca-logo animated style="--primary-color: lightseagreen"></orca-logo>
+                <figcaption>
+                    <pre>&lt;<span class="elem">orca-logo</span>
     <span class="attr">animated</span>
     <span class="attr">style</span>="<span class="attr-value">--primary-color: lightseagreen</span>"&gt;
     &lt;/<span class="elem">orca-logo</span>&gt;</pre>
-            </figcaption>
-        </figure>
-        <figure>
-            <orca-logo animated="spinner" style="--primary-color: crimson"></orca-logo>
-            <figcaption>
-                <pre>&lt;<span class="elem">orca-logo</span>
+                </figcaption>
+            </figure>
+            <figure>
+                <orca-logo animated="spinner" style="--primary-color: crimson"></orca-logo>
+                <figcaption>
+                    <pre>&lt;<span class="elem">orca-logo</span>
     <span class="attr">animated</span>="<span class="attr-value">spinner</span>"
     <span class="attr">style</span>="<span class="attr-value">--primary-color: crimson</span>"&gt;
     &lt;/<span class="elem">orca-logo</span>&gt;
-</pre>
-            </figcaption>
-        </figure>
+                </pre>
+                </figcaption>
+            </figure>
+        </main>
     </body>
 
 </html>

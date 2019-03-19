@@ -26,7 +26,7 @@ module.exports = (env, { mode, analyze }) => ({
     main: path.resolve(__dirname, 'index.js')
   },
   output: {
-    filename: '[name].min.js'
+    filename: 'orca-logo.min.js'
   },
   module: {
     rules: [{}, {
