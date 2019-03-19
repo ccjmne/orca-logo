@@ -7,7 +7,7 @@ See the [live demo](https://ccjmne.github.io/orca-logo).
 
 Basic usage:
 
-```lang-html
+```html
 <orca-logo></orca-logo>
 ```
 
@@ -17,7 +17,7 @@ Displays the logo. Hover (or tap) it to have it 'shine'.
 
 1.  `animated`
 
-    ```lang-html
+    ```html
     <orca-logo animated></orca-logo>
     ```
 
@@ -26,7 +26,7 @@ Displays the logo. Hover (or tap) it to have it 'shine'.
 
 2.  `animated="spinner"`
 
-    ```lang-html
+    ```html
     <orca-logo animated="spinner"></orca-logo>
     ```
 
@@ -50,7 +50,9 @@ Style its primary colour via the CSS variable `--primary-colour`.
 
 Install through `npm`:
 
-    npm install orca-logo
+```shell
+npm install orca-logo
+```
 
 ## Licensing
 
