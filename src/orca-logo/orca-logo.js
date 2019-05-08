@@ -35,7 +35,7 @@ window.customElements.define('orca-logo', class OrcaLogo extends HTMLElement {
 
   shine() {
     if (!this.shining) {
-      this.shining = this.reflection.animate({ x: [-125, 540] }, { duration: 800, easing: 'ease-in-out' }).finished.then(() => this.shining = false);
+      this.shining = this.reflection.animate({ x: [-125, 540] }, { duration: 800, easing: 'ease-in-out' }).onfinish = () => this.shining = false;
     }
   }
 
