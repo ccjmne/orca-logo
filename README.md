@@ -3,6 +3,8 @@
 Vanilla JS animated logo for NCLS Development's Orca solution, as a Web Component.  
 See the [live demo](https://ccjmne.github.io/orca-logo).
 
+[![size](https://img.badgesize.io/ccjmne/orca-logo/master/dist/orca-logo.min.js?compression=gzip)](https://github.com/ccjmne/orca-logo/blob/master/dist/orca-logo.min.js)
+
 ## Usage
 
 Basic usage:
@@ -61,3 +63,10 @@ npm install orca-logo
 Permissions of this strong copyleft license are conditioned on making available complete source code of licensed works and modifications, which include larger works using a licensed work, under the same license.  
 Copyright and license notices must be preserved.  
 Contributors provide an express grant of patent rights.
+
+## Note to the maintainers
+
+Redeploy to [GitHub Pages](https://pages.github.com/) with:
+```shell
+npm run deploy
+```

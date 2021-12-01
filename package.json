@@ -5,10 +5,11 @@
   "main": "index.js",
   "module": "dist/orca-logo.min.js",
   "scripts": {
-    "analyze": "webpack --mode production --analyze",
-    "build": "webpack --mode production",
-    "dev": "webpack-dev-server --mode development --content-base dist --port 8001",
-    "start": "npm run dev"
+    "analyze": "cross-env TS_NODE_PROJECT=\"tsconfig-webpack.json\" webpack --mode production --analyze",
+    "build": "cross-env TS_NODE_PROJECT=\"tsconfig-webpack.json\" webpack --mode production",
+    "dev": "cross-env TS_NODE_PROJECT=\"tsconfig-webpack.json\" webpack serve --mode development --port 8001 --open",
+    "start": "npm run dev",
+    "deploy": "npm run build && gh-pages --dist dist --branch gh-pages"
   },
   "repository": {
     "type": "git",
@@ -32,19 +33,28 @@
   },
   "homepage": "https://github.com/ccjmne/orca-logo#readme",
   "devDependencies": {
-    "@babel/core": "^7.4.4",
-    "@babel/preset-env": "^7.4.4",
-    "babel-loader": "^8.0.5",
-    "clean-webpack-plugin": "^2.0.2",
-    "css-loader": "^2.1.1",
-    "html-loader": "^0.5.5",
-    "html-webpack-plugin": "^3.2.0",
-    "node-sass": "^4.12.0",
-    "sass-loader": "^7.1.0",
-    "webpack": "^4.31.0",
-    "webpack-bundle-analyzer": "^3.3.2",
-    "webpack-cli": "^3.3.2",
-    "webpack-dev-server": "^3.3.1"
-  },
-  "dependencies": {}
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "@types/webpack-dev-server": "^4.5.0",
+    "@typescript-eslint/eslint-plugin": "^5.5.0",
+    "@typescript-eslint/parser": "^5.5.0",
+    "babel-loader": "^8.2.3",
+    "clean-webpack-plugin": "^4.0.0",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.5.1",
+    "eslint": "^8.3.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "gh-pages": "^3.2.3",
+    "html-loader": "^3.0.1",
+    "html-webpack-plugin": "^5.5.0",
+    "node-sass": "^6.0.1",
+    "sass-loader": "^12.3.0",
+    "ts-loader": "^9.2.6",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.2",
+    "webpack": "^5.64.4",
+    "webpack-bundle-analyzer": "^4.5.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.6.0"
+  }
 }
