@@ -28,62 +28,50 @@ export default (
   entry: {
     main: {
       import: resolve(src, 'orca-logo/orca-logo.ts'),
+      filename: 'orca-logo.min.js',
     },
   },
   output: {
     path: dist,
-    filename: 'orca-logo.min.js',
   },
   module: {
-    rules: [
-      {
-        test: /\.tsx?$/,
-        exclude: /node_modules/,
-        use: ['ts-loader'],
-      },
-      {
-        test: /\.scss$/,
-        exclude: /node_modules/,
-        use: [
-          { loader: 'css-loader', options: { exportType: 'css-style-sheet' } },
-          'sass-loader',
-        ],
-      },
-      {
-        test: /\.html$/,
-        use: [
-          {
-            loader: 'html-loader',
-            options: {
-              esModule: false,
-              sources: {
-                list: [
-                  { tag: 'img', attribute: 'src', type: 'src' },
-                  { tag: 'img', attribute: 'data-src', type: 'src' },
-                  { tag: 'video', attribute: 'src', type: 'src' },
-                  { tag: 'video', attribute: 'data-src', type: 'src' },
-                ],
-              },
-              minimize: mode === 'production' && HTML_MINIFY_OPTS,
+    rules: [{
+      test: /\.tsx?$/,
+      exclude: /node_modules/,
+      use: ['ts-loader'],
+    }, {
+      test: /\.scss$/,
+      exclude: /node_modules/,
+      use: [
+        { loader: 'css-loader', options: { exportType: 'css-style-sheet' } },
+        'sass-loader',
+      ],
+    }, {
+      test: /\.html$/,
+      use: [
+        {
+          loader: 'html-loader',
+          options: {
+            esModule: false,
+            sources: {
+              list: [
+                { tag: 'img', attribute: 'src', type: 'src' },
+                { tag: 'img', attribute: 'data-src', type: 'src' },
+                { tag: 'video', attribute: 'src', type: 'src' },
+                { tag: 'video', attribute: 'data-src', type: 'src' },
+              ],
             },
+            minimize: mode === 'production' && HTML_MINIFY_OPTS,
           },
-        ],
-      },
-    ],
+        },
+      ],
+    }],
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', 'vert', 'frag', '...'],
     // IMPORTANT: prioritise 'global' node modules, for extending modules (e.g.: d3-selection-multi enhances d3-selection)
     modules: [src, resolve(__dirname, 'node_modules'), 'node_modules'],
-    mainFields: [
-      'webpack',
-      'module',
-      'browser',
-      'web',
-      'browserify',
-      ['jam', 'main'],
-      'main',
-    ],
+    mainFields: ['webpack', 'module', 'browser', 'web', 'browserify', ['jam', 'main'], 'main'],
   },
   plugins: ([] as WebpackPluginInstance[]).concat(
     mode === 'production' ? new CleanWebpackPlugin() : [],

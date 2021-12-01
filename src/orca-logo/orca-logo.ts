@@ -10,7 +10,7 @@ import sheet from './orca-logo.scss';
 const template = document.createElement(`template`);
 template.innerHTML = require('./orca-logo.html');
 
-const CLIP_ID_PREFIX = 'orca-logo:clip';
+const CLIP_ID_PREFIX = 'orca-logo';
 const CLIP_ID_SEQ = new Counter();
 
 window.customElements.define(
@@ -27,11 +27,13 @@ window.customElements.define(
      */
     declare readonly shadowRoot: ShadowRoot;
 
+    private clipId: number;
     private reflection: SVGRectElement;
     private shining = false;
 
     constructor() {
       super();
+      this.clipId = CLIP_ID_SEQ.increment();
       this.attachShadow({ mode: 'open' });
       this.shadowRoot.adoptedStyleSheets = [sheet];
       this.shadowRoot.appendChild(template.content.cloneNode(true));
@@ -49,13 +51,12 @@ window.customElements.define(
         return;
       }
 
-      // Generate unique clipPath ids (for the shine) for each orca-logo instance
-      const clips: { [key: string]: number } = Array
-        .from(this.shadowRoot.querySelectorAll('clipPath[data-clip]'))
-        .reduce((acc, e) => ({ ...acc, [e.getAttribute('data-clip')!]: `${CLIP_ID_PREFIX}#${CLIP_ID_SEQ.increment()}` }), {});
+      this.shadowRoot
+        .querySelectorAll('clipPath[data-clip]')
+        .forEach(e => this.setId(e, e.getAttribute('data-clip')!));
       this.shadowRoot
         .querySelectorAll('[data-clip-path]')
-        .forEach(path => path.setAttributeNS('http://www.w3.org/2000/svg', 'clip-path', `url(#${clips[path.getAttribute('data-clip-path')!]})`));
+        .forEach(e => this.setClipPath(e, e.getAttribute('data-clip-path')!));
 
       if (!this.spinner) {
         // don't need to be removed on disconnectedCallback since they only are scoped to `this`
@@ -65,7 +66,10 @@ window.customElements.define(
 
       if (this.animated) {
         // TODO: avoid `new` without assignment...
-        new OnScreen(this, { once: true, enter: () => this.classList.add('in-viewport') });
+        new OnScreen(this, {
+          once: true,
+          enter: () => this.classList.add('in-viewport'),
+        });
       }
     }
 
@@ -88,6 +92,18 @@ window.customElements.define(
 
     public get spinner() {
       return this.getAttribute('animated') === 'spinner';
+    }
+
+    private makeId(infix: string): string {
+      return `${CLIP_ID_PREFIX}:${infix}:${this.clipId}`;
+    }
+
+    private setId(element: Element, infix: string): void {
+      element.setAttribute('id', this.makeId(infix));
+    }
+
+    private setClipPath(element: Element, infix: string): void {
+      element.setAttribute('clip-path', `url(#${this.makeId(infix)})`);
     }
 
   },

@@ -2,8 +2,8 @@
   "name": "orca-logo",
   "version": "1.3.0",
   "description": "The logo for NCLS Development's Orca solution in all its forms, as a Web Component",
-  "main": "index.js",
-  "module": "dist/orca-logo.min.js",
+  "main": "dist/orca-logo.min.js",
+  "module": "src/orca-logo/orca-logo.ts",
   "scripts": {
     "analyze": "cross-env TS_NODE_PROJECT=\"tsconfig-webpack.json\" webpack --mode production --analyze",
     "build": "cross-env TS_NODE_PROJECT=\"tsconfig-webpack.json\" webpack --mode production",
