@@ -82,7 +82,7 @@ window.customElements.define(
     public shine() {
       if (!this.shining) {
         this.shining = !!(this.reflection.animate(
-          { x: [-125, 540] },
+          { transform: ['translateX(0) skewX(20deg)', 'translateX(665px) skewX(20deg)'] },
           { duration: 800, easing: 'ease-in-out' },
         ).onfinish = () => (this.shining = false));
       }

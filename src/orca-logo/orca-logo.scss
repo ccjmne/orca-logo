@@ -36,11 +36,11 @@ $spin-duration: 3s;
 }
 @keyframes shine {
   from {
-    x: -125;
+    transform: translateX(0) skewX(20deg);
   }
 
   to {
-    x: 540;
+    transform: translateX(665px) skewX(20deg);
   }
 }
 
