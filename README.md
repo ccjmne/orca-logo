@@ -68,5 +68,5 @@ Contributors provide an express grant of patent rights.
 
 Redeploy to [GitHub Pages](https://pages.github.com/) with:
 ```shell
-npm run deploy
+pnpm run deploy
 ```

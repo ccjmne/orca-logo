@@ -57,7 +57,13 @@ window.customElements.define(
       this.shadowRoot
         .querySelectorAll('[data-clip-path]')
         .forEach(e => this.setClipPath(e, e.getAttribute('data-clip-path')!));
-
+      this.shadowRoot
+        .querySelectorAll<SVGGeometryElement>('[animate-stroke]')
+        .forEach((path) => {
+          const length = path.getTotalLength();
+          path.style.setProperty('--spinner-stroke', `${length * 3 / 8}px`);
+          path.style.setProperty('--spinner-gap', `${length / 8}px`);
+        });
       if (!this.spinner) {
         // don't need to be removed on disconnectedCallback since they only are scoped to `this`
         this.addEventListener('mouseenter', this.shine, { passive: true });

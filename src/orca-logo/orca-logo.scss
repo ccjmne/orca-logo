@@ -52,7 +52,7 @@ $spin-duration: 3s;
   [animate-stroke] {
     animation: spinner $spin-duration linear infinite;
     stroke-width: 2;
-    stroke-dasharray: calc(var(--total-length) * 3 / 8) calc(var(--total-length) * 1 / 8);
+    stroke-dasharray: var(--spinner-stroke) var(--spinner-gap);
   }
 }
 

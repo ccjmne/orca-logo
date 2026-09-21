@@ -3,6 +3,7 @@ import { resolve } from 'path';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import HtmlWebpackPlugin, { MinifyOptions } from 'html-webpack-plugin';
 import { Configuration, EntryObject, WebpackPluginInstance } from 'webpack';
+import 'webpack-dev-server';
 
 import { author, description, keywords, name } from './package.json';
 
