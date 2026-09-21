@@ -53,7 +53,7 @@ Style its primary colour via the CSS variable `--primary-colour`.
 Install through `npm`:
 
 ```shell
-npm install orca-logo
+npm install @ccjmne/orca-logo
 ```
 
 ## Licensing

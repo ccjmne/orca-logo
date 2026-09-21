@@ -1,5 +1,5 @@
 {
-  "name": "orca-logo",
+  "name": "@ccjmne/orca-logo",
   "version": "1.4.0",
   "description": "The logo for NCLS Development's Orca solution in all its forms, as a Web Component",
   "main": "dist/orca-logo.min.js",
@@ -14,6 +14,10 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ccjmne/orca-logo.git"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
   },
   "keywords": [
     "logo",
