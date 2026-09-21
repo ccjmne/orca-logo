@@ -6,9 +6,8 @@
   "module": "src/orca-logo/orca-logo.ts",
   "packageManager": "pnpm@11.26.0",
   "scripts": {
-    "analyze": "cross-env TS_NODE_PROJECT=\"tsconfig-webpack.json\" webpack --mode production --analyze",
-    "build": "cross-env TS_NODE_PROJECT=\"tsconfig-webpack.json\" webpack --mode production",
-    "dev": "cross-env TS_NODE_PROJECT=\"tsconfig-webpack.json\" webpack serve --mode development --port 8001 --open",
+    "build": "vite build",
+    "dev": "vite --open",
     "start": "pnpm run dev",
     "deploy": "pnpm run build && gh-pages --dist dist --branch gh-pages"
   },
@@ -34,30 +33,9 @@
   },
   "homepage": "https://github.com/ccjmne/orca-logo#readme",
   "devDependencies": {
-    "@babel/core": "^7.16.0",
-    "@babel/preset-env": "^7.16.4",
-    "@types/node": "^16.11.10",
-    "@types/webpack-dev-server": "^4.5.0",
-    "@typescript-eslint/eslint-plugin": "^5.5.0",
-    "@typescript-eslint/parser": "^5.5.0",
-    "babel-loader": "^8.2.3",
-    "clean-webpack-plugin": "^4.0.0",
-    "cross-env": "^7.0.3",
-    "css-loader": "^6.5.1",
-    "eslint": "^8.3.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.25.3",
     "gh-pages": "^3.2.3",
-    "html-loader": "^3.0.1",
-    "html-webpack-plugin": "^5.5.0",
     "sass": "^1.43.5",
-    "sass-loader": "^12.3.0",
-    "ts-loader": "^9.2.6",
-    "ts-node": "^10.4.0",
-    "typescript": "^4.5.2",
-    "webpack": "^5.64.4",
-    "webpack-bundle-analyzer": "^4.5.0",
-    "webpack-cli": "^4.9.1",
-    "webpack-dev-server": "^4.6.0"
+    "typescript": "^5.9.2",
+    "vite": "^7.1.7"
   }
 }

@@ -1,4 +1,1 @@
-declare module '*.scss' {
-  const sheet: CSSStyleSheet;
-  export default sheet;
-}
+/// <reference types="vite/client" />

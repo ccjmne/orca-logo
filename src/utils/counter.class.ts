@@ -1,5 +1,3 @@
-/* eslint-disable no-plusplus */
-
 export default class Counter {
 
   private v: number;

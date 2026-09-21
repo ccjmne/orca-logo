@@ -2,13 +2,8 @@
   "compileOnSave": true,
   "compilerOptions": {
     "incremental": true,
-    "baseUrl": ".",
-    "paths": {
-      "*": ["./node_modules/@types/*"], // to avoid looking into node_modules/@types/d3-selection-multi/node_modules/@types/d3-selection/index.d.ts
-      "webpack": ["./node_modules/webpack"] // together with es-interop
-    },
-    "module": "es6",
-    "moduleResolution": "node",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "importHelpers": true,

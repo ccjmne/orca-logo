@@ -1,8 +1,5 @@
 import Interval from './interval';
 
-/* eslint no-param-reassign: "off" */
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-
 type Selector = ReadonlyArray<Selector> | NodeListOf<globalThis.Element> | Element | string;
 const main = document.querySelector('.main-wrapper')!;
 

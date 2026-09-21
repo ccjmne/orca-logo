@@ -1,14 +1,11 @@
 import Counter from '../utils/counter.class';
 import OnScreen from '../utils/onscreen';
 
-import sheet from './orca-logo.scss';
-
-/* eslint-disable no-new */
-/* eslint-disable no-return-assign */
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
+import markup from './orca-logo.html?raw';
+import styles from './orca-logo.scss?inline';
 
 const template = document.createElement(`template`);
-template.innerHTML = require('./orca-logo.html');
+template.innerHTML = `<style>${styles}</style>${markup}`;
 
 const CLIP_ID_PREFIX = 'orca-logo';
 const CLIP_ID_SEQ = new Counter();
@@ -35,7 +32,6 @@ window.customElements.define(
       super();
       this.clipId = CLIP_ID_SEQ.increment();
       this.attachShadow({ mode: 'open' });
-      this.shadowRoot.adoptedStyleSheets = [sheet];
       this.shadowRoot.appendChild(template.content.cloneNode(true));
       this.reflection = this.shadowRoot.querySelector('rect.shine')!;
     }
@@ -59,9 +55,9 @@ window.customElements.define(
         .forEach(e => this.setClipPath(e, e.getAttribute('data-clip-path')!));
       this.shadowRoot
         .querySelectorAll<SVGGeometryElement>('[animate-stroke]')
-        .forEach((path) => {
+        .forEach(path => {
           const length = path.getTotalLength();
-          path.style.setProperty('--spinner-stroke', `${length * 3 / 8}px`);
+          path.style.setProperty('--spinner-stroke', `${(length * 3) / 8}px`);
           path.style.setProperty('--spinner-gap', `${length / 8}px`);
         });
       if (!this.spinner) {
